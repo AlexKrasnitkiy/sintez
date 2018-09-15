@@ -37,6 +37,7 @@
         function generate() {
             console.log('vm.selectedCategory', vm.selectedCategory);
             console.log('vm.amount', vm.amount);
+
         }
 
 

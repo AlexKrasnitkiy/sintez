@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="test.app.Core">
+<head>
+    <meta charset="UTF-8">
+    <title>Sintez Test</title>
+    <link rel="stylesheet" href="bootstrap-3.3.2-dist/css/bootstrap.css">
+    <script src="https://cdn.jsdelivr.net/lodash/4.10.0/lodash.js"></script>
+    <script src="./angular/angular.js"></script>
+    <script src="./angular/core/core.module.js"></script>
+    <script src="./angular/core/core.config.js"></script>
+    <script src="./angular/core/core.run.js"></script>
+    <script src="./angular/core/core.service.js"></script>
+    <script src="./angular/core/core.controller.js"></script>
+    <script src="./angular/core/ui-bootstrap-tpls-1.3.2.min.js"></script>
+</head>
+<body ng-controller="CoreController as vm">
+<input type="number" name="amount" id="amount" class="form-control" min="1" max="50" value="10">
+<select  ng-model="vm.selectedCategory" ng-options="category.id as category.name for category in vm.categories" ng-init="vm.selectedCategory = vm.categories[0].id" class="form-control">
+    <option selected value="">Any Category</option>
+</select>
+<button class="btn btn-lg btn-primary btn-block" ng-click="vm.generate()">Generate API URL</button>
+
+</body>
+</html>

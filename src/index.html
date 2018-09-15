@@ -15,10 +15,16 @@
 </head>
 <body ng-controller="CoreController as vm">
 <input type="number" name="amount" id="amount" class="form-control" min="1" max="50" value="10">
-<select  ng-model="vm.selectedCategory" ng-options="category.id as category.name for category in vm.categories" ng-init="vm.selectedCategory = vm.categories[0].id" class="form-control">
+<select  ng-model="vm.selectedCategory" ng-options="category.id as category.name for category in vm.categories" class="form-control">
     <option selected value="">Any Category</option>
 </select>
+<select  ng-model="vm.selectedDifficulty" ng-options="dif.name for dif in vm.difficulty" class="form-control">
+    <option selected value="">Any Difficulty</option>
+</select>
 <button class="btn btn-lg btn-primary btn-block" ng-click="vm.generate()">Generate API URL</button>
+
+    {{vm.questions}}
+
 
 </body>
 </html>

@@ -21,9 +21,14 @@
 <select  ng-model="vm.selectedDifficulty" ng-options="dif.name for dif in vm.difficulty" class="form-control">
     <option selected value="">Any Difficulty</option>
 </select>
-<button class="btn btn-lg btn-primary btn-block" ng-click="vm.generate()">Generate API URL</button>
+<button class="btn btn-lg btn-primary btn-block" ng-click="vm.generateQuestions()">Generate API URL</button>
 
-    {{vm.questions}}
+    <div ng-repeat="q in vm.questions">
+        {{q.question}}
+        <ul>
+            <li ng-repeat="answer in q.incorrect_answers">{{answer}} <input type="radio" name="{{q}}" ng-model="correctAnswer" value="{{answer}}" /></li>
+        </ul>
+    </div>
 
 
 </body>

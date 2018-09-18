@@ -28,10 +28,11 @@
         <ul>
             <li ng-repeat="answer in q.incorrect_answers">{{answer}} <input id="{{q.answer}}" type="radio" name="{{q}}" ng-model="correctAnswer" value="{{answer}}" ng-click="vm.chosenAnswer(answer, q.correct_answer, q)" /></li>
         </ul>
-        <div ng-if="q.result === 'Correct'">Correct!</div>
-        <div ng-if="q.result === 'Incorrect'">Incorrect!</div>
+        <div>{{vm.questions[$index]._result}}</div>
     </div>
-
+    <div>
+        Total Correct Answers: {{vm.totalCorrectAnswers}}
+    </div>
 
 </body>
 </html>

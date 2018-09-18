@@ -26,7 +26,7 @@
     <div ng-repeat="q in vm.questions">
         {{q.question}}
         <ul>
-            <li ng-repeat="answer in q.incorrect_answers">{{answer}} <input type="radio" name="{{q}}" ng-model="correctAnswer" value="{{answer}}" /></li>
+            <li ng-repeat="answer in q.incorrect_answers">{{answer}} <input type="radio" name="{{q}}" ng-model="correctAnswer" value="{{answer}}" ng-click="vm.chosenAnswer(answer, q.correct_answer)" /></li>
         </ul>
     </div>
 

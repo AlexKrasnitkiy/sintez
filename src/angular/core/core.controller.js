@@ -24,12 +24,25 @@
         vm.total = {};
 
         vm.generateQuestions = generateQuestions;
+        vm.chosenAnswer = chosenAnswer;
 
 
         activate();
 
         function activate() {
             getAllCategories();
+        }
+
+        function chosenAnswer(answer, correctAnswer) {
+            var totalCorrectAnswers = 0;
+            console.log('answer', answer);
+            console.log('correctAnswer', correctAnswer);
+            if (answer === correctAnswer) {
+                totalCorrectAnswers++;
+                console.log('Correct Answer!, total Correct Answers is ', totalCorrectAnswers);
+            } else {
+                console.log('Incorrect Answer!')
+            }
         }
 
         function getAllCategories() {
@@ -64,6 +77,9 @@
             function getQuestionsByFilter() {
                 CoreService.getQuestions(vm.total).then(function (response) {
                     //тут надо что то придумать, очищает фронт но на бекенд идет хрень
+                    //перепроверить
+                    vm.total= {};
+                    //
                     vm.selectedDifficulty = {};
                     vm.selectedCategory = {};
                     vm.amount = 10;

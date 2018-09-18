@@ -22,6 +22,7 @@
                 name: 'Hard'
             }];
         vm.total = {};
+        vm.totalCorrectAnswers = 0;
 
         vm.generateQuestions = generateQuestions;
         vm.chosenAnswer = chosenAnswer;
@@ -33,15 +34,17 @@
             getAllCategories();
         }
 
-        function chosenAnswer(answer, correctAnswer) {
-            var totalCorrectAnswers = 0;
+        function chosenAnswer(answer, correctAnswer, q, dwa) {
+            console.log('q', q);
             console.log('answer', answer);
             console.log('correctAnswer', correctAnswer);
             if (answer === correctAnswer) {
-                totalCorrectAnswers++;
-                console.log('Correct Answer!, total Correct Answers is ', totalCorrectAnswers);
+                vm.totalCorrectAnswers++;
+                console.log('Correct Answer!, total Correct Answers is ', vm.totalCorrectAnswers);
+                q._result = 'Correct';
             } else {
-                console.log('Incorrect Answer!')
+                console.log('Incorrect Answer!');
+               q._result = 'Incorrect';
             }
         }
 

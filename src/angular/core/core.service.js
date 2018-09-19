@@ -45,7 +45,6 @@
             request.category !== null && request.category !== "" && request.category !== undefined ? url +='&category=' + request.category : '';
             request.difficulty !== null && request.difficulty !== "" && request.difficulty !== undefined ? url += '&difficulty=' + request.difficulty: '';
 
-            console.log(url);
             $http.post(url).then(function (response) {
                 if (!response.data){
                     deferred.reject()

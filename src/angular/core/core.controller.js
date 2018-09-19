@@ -38,10 +38,8 @@
         function chosenAnswer(answer, correctAnswer, q) {
             if (answer === correctAnswer) {
                 vm.totalCorrectAnswers++;
-                console.log('Correct Answer!, total Correct Answers is ', vm.totalCorrectAnswers);
                 q._result = 'Correct';
             } else {
-                console.log('Incorrect Answer!');
                q._result = 'Incorrect';
             }
             checkTotalResult();
@@ -76,7 +74,6 @@
                 vm.total.category = vm.selectedCategory;
             }
             if (vm.selectedDifficulty !== null && vm.selectedDifficulty !== undefined && vm.selectedDifficulty.name !== null && vm.selectedDifficulty.name !== undefined) {
-                console.log('DO NOT WORK');
                 vm.total.difficulty = vm.selectedDifficulty.name.toLowerCase();
             }
             if (vm.total !== null && vm.total !== undefined) {
@@ -95,10 +92,16 @@
                     vm.selectedCategory = undefined;
                     vm.amount = 10;
                     vm.questions = response.results;
-                    _.forEach(vm.questions, function (q) {
-                        q.incorrect_answers.push(q.correct_answer);
-                        q.incorrect_answers.shuffle();
-                    });
+                    //что то лодаш перестал работать
+                    // _.forEach(vm.questions, function (q) {
+                    //     q.incorrect_answers.push(q.correct_answer);
+                    //     q.incorrect_answers.shuffle();
+                    // });
+
+                    for (var i = 0; i < vm.questions.length; i++){
+                        vm.questions[i].incorrect_answers.push(vm.questions[i].correct_answer);
+                        vm.questions[i].incorrect_answers.shuffle();
+                    }
 
 
                 }).catch(function (error) {

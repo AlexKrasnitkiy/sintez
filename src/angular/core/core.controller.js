@@ -23,6 +23,7 @@
             }];
         vm.total = {};
         vm.totalCorrectAnswers = 0;
+        vm.questionsMode = false;
 
         vm.generateQuestions = generateQuestions;
         vm.chosenAnswer = chosenAnswer;
@@ -34,10 +35,7 @@
             getAllCategories();
         }
 
-        function chosenAnswer(answer, correctAnswer, q, dwa) {
-            console.log('q', q);
-            console.log('answer', answer);
-            console.log('correctAnswer', correctAnswer);
+        function chosenAnswer(answer, correctAnswer, q) {
             if (answer === correctAnswer) {
                 vm.totalCorrectAnswers++;
                 console.log('Correct Answer!, total Correct Answers is ', vm.totalCorrectAnswers);
@@ -45,6 +43,18 @@
             } else {
                 console.log('Incorrect Answer!');
                q._result = 'Incorrect';
+            }
+            checkTotalResult();
+        }
+
+        function checkTotalResult() {
+            for (var i = 0; i < vm.questions.length; i++) {
+                if (vm.questions[i]._result){
+                    vm.questionsMode = true;
+                } else {
+                    vm.questionsMode = false;
+                    break;
+                }
             }
         }
 
@@ -79,14 +89,11 @@
 
             function getQuestionsByFilter() {
                 CoreService.getQuestions(vm.total).then(function (response) {
-                    //тут надо что то придумать, очищает фронт но на бекенд идет хрень
-                    //перепроверить
-                    vm.total= {};
-                    //
-                    vm.selectedDifficulty = {};
-                    vm.selectedCategory = {};
+                   delete vm.total.selectedDifficulty;
+                   delete vm.total.selectedCategory;
+                    vm.selectedDifficulty = undefined;
+                    vm.selectedCategory = undefined;
                     vm.amount = 10;
-                    //
                     vm.questions = response.results;
                     _.forEach(vm.questions, function (q) {
                         q.incorrect_answers.push(q.correct_answer);

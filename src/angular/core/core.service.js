@@ -33,7 +33,6 @@
         }
 
         function getQuestions(request) {
-            console.log('awdawd', request);
             var deferred = $q.defer();
             // что бы просто в запрос добавить обьект post('https://opentdb.com/api.php', request)
             //Выбивает ошибку

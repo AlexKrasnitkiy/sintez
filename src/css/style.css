@@ -1,0 +1,23 @@
+body{
+    background-color: #383e4e;
+    color: #ffffff
+}
+
+#container{
+    width: 600px;
+    margin: 0 auto;
+}
+
+header {
+    height: 50px;
+    background-color: #222222;
+    margin-bottom: 20px;
+}
+
+.green {
+    color: green;
+}
+
+.red {
+    color: red;
+}
